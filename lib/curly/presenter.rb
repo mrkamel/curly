@@ -183,7 +183,7 @@ module Curly
         # solution in the future.
         begin
           full_name = namespace.join("::") << "::" << class_name
-          const_get(full_name)
+          full_name.constantize
         rescue NameError => e
           if namespace.empty?
             raise Curly::PresenterNameError.new(e, name)
