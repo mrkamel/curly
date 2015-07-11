@@ -286,7 +286,10 @@ module Curly
         [name, version, dependency_cache_keys].flatten.join("/")
       end
 
-      def presents(*args, **options, &block)
+      def presents(*args, &block)
+        options = args.last if args.is_a?(Hash)
+        options ||= {}
+
         if options.key?(:default) && block_given?
           raise ArgumentError,  "Cannot provide both `default:` and block"
         end
