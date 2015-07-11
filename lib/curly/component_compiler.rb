@@ -2,12 +2,12 @@ module Curly
   class ComponentCompiler
     attr_reader :presenter_class, :component, :type
 
-    def self.compile(presenter_class, component, type: nil)
-      new(presenter_class, component, type: type).compile
+    def self.compile(presenter_class, component, options = {})
+      new(presenter_class, component, type: options[:type]).compile
     end
 
-    def initialize(presenter_class, component, type: nil)
-      @presenter_class, @component, @type = presenter_class, component, type
+    def initialize(presenter_class, component, options = {})
+      @presenter_class, @component, @type = presenter_class, component, options[:type]
     end
 
     def compile
